@@ -17,6 +17,10 @@ public class ProductService {
         return productRepo.findById(id);
     }
 
+    public Product addProduct(Product product) {
+        return productRepo.saveAndFlush(product);
+    }
+
     public Iterable<Product> getAllProducts() {
         return productRepo.findAll(Pageable.unpaged());
 

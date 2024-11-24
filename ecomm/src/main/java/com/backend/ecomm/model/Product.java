@@ -1,8 +1,6 @@
 package com.backend.ecomm.model;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -20,10 +18,12 @@ public class Product {
 
     private int stock;
 
-    @Enumerated(EnumType.STRING)
-    private Category category;
+    private String category;
 
-    public Product(String name, double price, int stock, Category category) {
+    public Product() {
+    }
+
+    public Product(String name, double price, int stock, String category) {
         this.name = name;
         this.price = price;
         this.stock = stock;
@@ -62,11 +62,11 @@ public class Product {
         this.stock = stock;
     }
 
-    public Category getCategory() {
+    public String getCategory() {
         return category;
     }
 
-    public void setCategory(Category category) {
+    public void setCategory(String category) {
         this.category = category;
     }
 }

@@ -1,4 +1,4 @@
-package com.backend.ecomm.repo;
+package com.backend.ecomm.controller;
 
 enum Category {
     ELECTRONICS,
