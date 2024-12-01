@@ -18,9 +18,9 @@ public interface ProductRepo extends JpaRepository<Product, Long> {
 
     Iterable<Product> findByName(String name);
 
-    Iterable<Product> findByCategory(Category category);
+    Iterable<Product> findByCategory(String category);
 
-    Iterable<Product> findByCategoryAndName(Category category, String name);
+    Iterable<Product> findByCategoryAndName(String category, String name);
 
     void deleteById(long id);
 
