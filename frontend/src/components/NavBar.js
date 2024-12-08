@@ -5,7 +5,7 @@ export default function NavBar() {
     "link-dark link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover text-nowrap";
   return (
     <>
-      <nav className="navbar navbar-dark bg-dark">
+      <nav className="navbar navbar-dark bg-dark sticky-top">
         <div className="container-fluid">
           <div className="d-flex">
             <a className="navbar-brand" href="#">
@@ -77,7 +77,10 @@ export default function NavBar() {
               </div>
             </div>
           </div>
-          <div className="text-light">Login/Logout</div>
+          <div className="d-flex gap-4">
+            <i className="bi bi-cart" style={{ fontSize: "1.2rem", cursor: "pointer",  }}></i>
+            <div className="text-light">Login/Logout</div>
+          </div>
         </div>
       </nav>
     </>

@@ -11,9 +11,16 @@ export default function LeftSideBar({ filters, onFilterChange }) {
         setProductBrands(data);
       });
   }, []);
+
+  const updateBrands = (event) => {
+    const selectedBrands = event.target.checked
+      ? [...filters.selectedBrands, event.target.value]
+      : filters.selectedBrands.filter((brand) => brand !== event.target.value);
+    onFilterChange({ ...filters, selectedBrands });
+  };
   return (
-    <div class="bg-dark text-light p-3 h-100">
-      <div id="sidebar-menu">
+    <div className="bg-dark text-light p-3 h-100">
+      <div id="sidebar-menu" style={{position: 'sticky', top: '60px'}}>
         <div className="d-flex flex-column gap-3">
           <div className="d-flex flex-column">
             <h5>Price range</h5>
@@ -31,6 +38,7 @@ export default function LeftSideBar({ filters, onFilterChange }) {
                   className="form-check-input"
                   type="checkbox"
                   value={brand}
+                  onChange={updateBrands}
                   id={`brand${index}`}
                 />
                 <label className="form-check-label" htmlFor={`brand${index}`}>

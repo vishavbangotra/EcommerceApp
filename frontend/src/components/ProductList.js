@@ -1,16 +1,21 @@
 import React, { useEffect, useState } from 'react'
 import Product from './Product'
 
-export default function ProductList() {
-  useEffect(() => {
+export default function ProductList({ products }) {
+  // useEffect(() => {
     
-  }, [])
+  // }, [])
 
   return (
-    <div>
+    <div className='container pt-2'>
         <div className='row'>
-            <div className='col-lg-3'>
-            </div>
+              {products.map((product) => {
+                  return (
+                    <div className="col-lg-3">
+                      <Product product={product} />
+                    </div>
+                  );
+              })}
         </div>
     </div>
   )

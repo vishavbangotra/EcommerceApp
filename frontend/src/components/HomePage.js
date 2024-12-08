@@ -22,6 +22,7 @@ export default function HomePage() {
       .then((data) => {
         setProducts(data);
       });
+      console.log(products);
   }, [filters]);
 
   // Fetch products whenever filters change
@@ -44,9 +45,9 @@ export default function HomePage() {
   return (
     <>
         <NavBar />
-        <div className='d-flex vh-100'>
-            <div style={{"width":"350px"}}>
-              <LeftSideBar filters={filters} onFilterChange={handleFilterChange}/>
+        <div className='d-flex h-100'>
+            <div style={{"width":"350px"}} className='left-side-bar'>
+              <LeftSideBar filters={filters} className='100vh' onFilterChange={handleFilterChange}/>
             </div>
             <div className='main-content'>
                 <ProductList products={products} />
