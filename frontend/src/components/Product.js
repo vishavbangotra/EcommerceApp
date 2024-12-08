@@ -8,6 +8,7 @@ export default function Product(props) {
             <img className='card-img-top' width={"100%"} height={"100%"}  src={sampleProductImage} alt="Product Img" />
             <div className='card-body'>
                 <h5 className='card-title'>Product Name</h5>
+                <p className='card-sub-title'>Category</p>
                 <span className='card-text'>500</span>
             </div>
             {/* </div> */}

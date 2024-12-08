@@ -1,5 +1,7 @@
 package com.backend.ecomm.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,24 +21,28 @@ public class ProductController {
 
     @Autowired
     ProductService productService;
-
-    @GetMapping("/products")
-    public String getProductList() {
-        productService.getAllProducts().forEach(product -> System.out.println(
-                product.getId() + " " + product.getName() + " " + product.getPrice() + " " + product.getStock() + " "
-                        + product.getCategory()));
-        return "200";
+    
+    @GetMapping("/api/products")
+    public ResponseEntity<Iterable<Product>> getProductList() {
+        return ResponseEntity.ok(productService.getAllProducts());
+        
     }
 
-    @GetMapping("/products/{id}")
+    @GetMapping("/api/products/{id}")
     public Product getProductById(@PathVariable long id) {
         return productService.getProductById(id);
     }
 
-    @PostMapping("/products/add")
+    @PostMapping("/api/products/add")
     public ResponseEntity<Product> addProducts(@RequestBody Product product) {
         productService.addProduct(product);
         return ResponseEntity.ok(product);
+    }
+
+    @GetMapping("/api/productBrands")
+    public ResponseEntity<List<String>> getAllBrandsList() {
+       List<String> brands = productService.getAllBrands();
+       return ResponseEntity.ok(brands);
     }
 
 }

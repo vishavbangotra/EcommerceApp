@@ -8,8 +8,10 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 public interface ProductRepo extends JpaRepository<Product, Long> {
+
     Product findById(long id);
 
     List<Product> findAll(Sort sort);
@@ -23,6 +25,9 @@ public interface ProductRepo extends JpaRepository<Product, Long> {
     Iterable<Product> findByCategoryAndName(String category, String name);
 
     void deleteById(long id);
+
+    @Query("SELECT DISTINCT p.brand FROM Product p")
+    List<String> findDistinctBrand();
 
     <S extends Product> S saveAndFlush(S entity);
 
